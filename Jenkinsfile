@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    stages {
+    stages { 
         stage('Checkout Code') {
             steps {
                 checkout scm
@@ -43,5 +43,5 @@ pipeline {
                  body: "Attention: The build or automated tests failed for build #${BUILD_NUMBER}.\n\nPlease check the logs immediately here: ${BUILD_URL}console"
         }  
     }
-}
+  }
 }
