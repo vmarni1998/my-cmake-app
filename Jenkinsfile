@@ -25,7 +25,9 @@ pipeline {
                 sh 'cd build && ctest --output-on-failure'
             }
         }
-        post {
+    } // <-- The stages block closes cleanly here!
+
+    post { // <-- The post block is now in the correct location
         success {
             // Archive the executable artifact
             archiveArtifacts artifacts: 'build/my_app', followSymlinks: false
@@ -43,5 +45,4 @@ pipeline {
                  body: "Attention: The build or automated tests failed for build #${BUILD_NUMBER}.\n\nPlease check the logs immediately here: ${BUILD_URL}console"
         }  
     }
-  }
 }
